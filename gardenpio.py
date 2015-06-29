@@ -13,7 +13,7 @@ GPIO.setmode(GPIO.BCM)
 sensor=[27,22,23]
 sensorPow = 18
 pump=[17,24,25]
-for e in range(0, 3):
+for e in range(0, len(sensor)):
 	GPIO.setup(pump[e], GPIO.OUT)
 	GPIO.setup(sensor[e], GPIO.IN)
 GPIO.setup(sensorPow, GPIO.OUT)
@@ -26,7 +26,7 @@ def irrigation():
     sleep(1)
     print "Irrigation start"
 
-    for e in range(0, 3):
+    for e in range(0, len(sensor)):
     	while  GPIO.input(sensor[e]):  #reads sensor
             GPIO.output(pump[e], 0) #water pump reley start
 
